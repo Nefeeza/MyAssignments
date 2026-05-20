@@ -1,0 +1,348 @@
+{
+  "info": {
+    "_postman_id": "53d32a6a-fa7d-43d9-80f6-fb3849c00397",
+    "name": "SalesforceOpportunity",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54899008",
+    "_collection_link": "https://go.postman.co/collection/54899008-53d32a6a-fa7d-43d9-80f6-fb3849c00397?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "createOpportunity",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "let response = pm.response.json();\r",
+              "\r",
+              "pm.globals.set(\"opportunity_id\", response.id);\r",
+              "\r",
+              "pm.test(\"Status code is 201\", function () {\r",
+              "    pm.response.to.have.status(201);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "00Dg500000AQSAz!AQEAQOWJoUxOqVZSXHa97Ymy7JJgdNMVKEwqdLNvb7y9LUr2naM3wmi6ow9jXvUgG2kD.VYGWwkegTnT3hjA91RqSJ9jXZpS",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Name\": \"OpportunityJaffrin\",\r\n    \"CloseDate\": \"2025-03-15\",\r\n    \"StageName\": \"Prospecting\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{instance_url}}/services/data/v59.0/sobjects/Opportunity",
+          "host": [
+            "{{instance_url}}"
+          ],
+          "path": [
+            "services",
+            "data",
+            "v59.0",
+            "sobjects",
+            "Opportunity"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "readOpportunity",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "00Dg500000AQSAz!AQEAQOWJoUxOqVZSXHa97Ymy7JJgdNMVKEwqdLNvb7y9LUr2naM3wmi6ow9jXvUgG2kD.VYGWwkegTnT3hjA91RqSJ9jXZpS",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{instance_url}}/services/data/v59.0/sobjects/Opportunity/{{opportunity_id}}",
+          "host": [
+            "{{instance_url}}"
+          ],
+          "path": [
+            "services",
+            "data",
+            "v59.0",
+            "sobjects",
+            "Opportunity",
+            "{{opportunity_id}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "updateOpportunity",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 204\", function () {\r",
+              "    pm.response.to.have.status(204);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "00Dg500000AQSAz!AQEAQOWJoUxOqVZSXHa97Ymy7JJgdNMVKEwqdLNvb7y9LUr2naM3wmi6ow9jXvUgG2kD.VYGWwkegTnT3hjA91RqSJ9jXZpS",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Type\": \"New Customer\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{instance_url}}/services/data/v59.0/sobjects/Opportunity/{{opportunity_id}}",
+          "host": [
+            "{{instance_url}}"
+          ],
+          "path": [
+            "services",
+            "data",
+            "v59.0",
+            "sobjects",
+            "Opportunity",
+            "{{opportunity_id}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "fetchList",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "let response = pm.response.json();\r",
+              "\r",
+              "if(response.records.length > 0){\r",
+              "\r",
+              "    let firstOpportunityId = response.records[0].Id;\r",
+              "\r",
+              "    pm.globals.set(\"first_id\", firstOpportunityId);\r",
+              "\r",
+              "    console.log(firstOpportunityId);\r",
+              "\r",
+              "}else{\r",
+              "\r",
+              "    console.log(\"No opportunities found\");\r",
+              "\r",
+              "}"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "00Dg500000AQSAz!AQEAQOWJoUxOqVZSXHa97Ymy7JJgdNMVKEwqdLNvb7y9LUr2naM3wmi6ow9jXvUgG2kD.VYGWwkegTnT3hjA91RqSJ9jXZpS",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{instance_url}}/services/data/v59.0/query?q=SELECT+Id,Name+FROM+Opportunity",
+          "host": [
+            "{{instance_url}}"
+          ],
+          "path": [
+            "services",
+            "data",
+            "v59.0",
+            "query"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "SELECT+Id,Name+FROM+Opportunity"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "deeleteFirstOpp",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 204\", function () {\r",
+              "    pm.response.to.have.status(204);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "00Dg500000AQSAz!AQEAQOWJoUxOqVZSXHa97Ymy7JJgdNMVKEwqdLNvb7y9LUr2naM3wmi6ow9jXvUgG2kD.VYGWwkegTnT3hjA91RqSJ9jXZpS",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{instance_url}}/services/data/v59.0/sobjects/Opportunity/{{first_id}}",
+          "host": [
+            "{{instance_url}}"
+          ],
+          "path": [
+            "services",
+            "data",
+            "v59.0",
+            "sobjects",
+            "Opportunity",
+            "{{first_id}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
